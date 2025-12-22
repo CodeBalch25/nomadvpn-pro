@@ -40,6 +40,10 @@ export const consultationFormSchema = z.object({
   timezone: z
     .string()
     .optional(),
+  homeIsp: z
+    .string()
+    .min(2, 'Please enter your internet provider')
+    .max(100, 'ISP name must be less than 100 characters'),
   currentSetup: z
     .string()
     .max(500, 'Please keep your response under 500 characters')
@@ -52,7 +56,7 @@ export const consultationFormSchema = z.object({
     .enum(['enterprise', 'startup', 'freelance', 'other'])
     .optional(),
   serviceInterest: z
-    .enum(['essential', 'premium', 'rental', 'enterprise']),
+    .enum(['essential', 'premium', 'remote']),
   notes: z
     .string()
     .max(1000, 'Notes must be less than 1000 characters')

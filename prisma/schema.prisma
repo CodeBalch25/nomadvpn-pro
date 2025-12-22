@@ -30,10 +30,11 @@ model Consultation {
   phone           String?
   preferredDate   DateTime?
   timezone        String?
+  homeIsp         String?   // Home internet service provider (Comcast, AT&T, etc.)
   currentSetup    String?   // What VPN/router they currently use
   travelPlans     String?   // Where they plan to travel
   employerType    String?   // enterprise, startup, freelance, other
-  serviceInterest String    // essential, premium, rental, enterprise
+  serviceInterest String    // essential, premium, remote
   notes           String?
   status          String    @default("pending") // pending, confirmed, completed, cancelled
   createdAt       DateTime  @default(now())

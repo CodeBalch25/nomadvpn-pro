@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
           ? new Date(validatedData.preferredDate)
           : null,
         timezone: validatedData.timezone || null,
+        homeIsp: validatedData.homeIsp || null,
         currentSetup: validatedData.currentSetup || null,
         travelPlans: validatedData.travelPlans || null,
         employerType: validatedData.employerType || null,
@@ -38,6 +39,7 @@ export async function POST(request: NextRequest) {
         ? new Date(validatedData.preferredDate)
         : null,
       timezone: validatedData.timezone,
+      homeIsp: validatedData.homeIsp,
       currentSetup: validatedData.currentSetup,
       travelPlans: validatedData.travelPlans,
       employerType: validatedData.employerType,

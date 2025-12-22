@@ -249,6 +249,22 @@ export function ConsultationForm() {
             </div>
 
             <div className="space-y-2">
+              <Label htmlFor="homeIsp">Home Internet Provider (ISP) *</Label>
+              <Input
+                id="homeIsp"
+                placeholder="e.g., Comcast, AT&T, Verizon, Spectrum, etc."
+                {...register('homeIsp')}
+                className={errors.homeIsp ? 'border-destructive' : ''}
+              />
+              <p className="text-xs text-muted-foreground">
+                This helps us ensure your home internet is compatible with the VPN setup.
+              </p>
+              {errors.homeIsp && (
+                <p className="text-sm text-destructive">{errors.homeIsp.message}</p>
+              )}
+            </div>
+
+            <div className="space-y-2">
               <Label htmlFor="currentSetup">Current VPN/Router Setup</Label>
               <Textarea
                 id="currentSetup"
@@ -275,12 +291,11 @@ export function ConsultationForm() {
           <div className="space-y-6">
             <div className="space-y-2">
               <Label>Which service interests you most? *</Label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
                 {[
                   { value: 'essential', label: 'Essential Setup', price: '$699' },
                   { value: 'premium', label: 'Premium + Support', price: '$1,299' },
-                  { value: 'rental', label: 'Remote VPN Access', price: '$49/mo' },
-                  { value: 'enterprise', label: 'Enterprise Custom', price: 'Custom' },
+                  { value: 'remote', label: 'Remote VPN Access', price: '$49/mo' },
                 ].map((service) => (
                   <button
                     key={service.value}

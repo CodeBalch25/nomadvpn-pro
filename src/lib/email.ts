@@ -43,6 +43,7 @@ export async function sendConsultationNotification(data: {
   phone?: string
   preferredDate?: Date | null
   timezone?: string
+  homeIsp?: string
   currentSetup?: string
   travelPlans?: string
   employerType?: string
@@ -74,7 +75,8 @@ export async function sendConsultationNotification(data: {
         <p><strong>Package:</strong> ${serviceNames[data.serviceInterest] || data.serviceInterest}</p>
         ${data.employerType ? `<p><strong>Employer Type:</strong> ${data.employerType}</p>` : ''}
 
-        <h3>Situation Details</h3>
+        <h3>Home Internet & Setup</h3>
+        ${data.homeIsp ? `<p><strong>Home ISP:</strong> ${data.homeIsp}</p>` : '<p><strong>Home ISP:</strong> Not provided</p>'}
         ${data.currentSetup ? `<p><strong>Current Setup:</strong> ${data.currentSetup}</p>` : ''}
         ${data.travelPlans ? `<p><strong>Travel Plans:</strong> ${data.travelPlans}</p>` : ''}
         ${data.notes ? `<p><strong>Additional Notes:</strong> ${data.notes}</p>` : ''}
