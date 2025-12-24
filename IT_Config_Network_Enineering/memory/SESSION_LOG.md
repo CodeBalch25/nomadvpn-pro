@@ -71,6 +71,9 @@ Profiles:
 ### Notes & Learnings
 - Always export WireGuard configs with DDNS domain, not IP
 - Travel routers on v4.7.0, Flint 2 on v4.8.3 - version mismatch may cause issues
+- MTU 1420 can cause fragmentation on cellular/hotspot - use 1280 for stability
+- iPhone hotspots are unstable - keep phone plugged in, disable Low Power Mode
+- Global Proxy mode causes brief "no internet" during VPN reconnection - this is normal
 - Port forwarding on Deco is required since Flint 2 is behind it
 
 ---
