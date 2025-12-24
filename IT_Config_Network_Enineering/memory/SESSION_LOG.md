@@ -108,7 +108,11 @@ Profiles:
 - iPhone hotspots are unstable - keep phone plugged in, disable Low Power Mode
 - Global Proxy mode causes brief "no internet" during VPN reconnection - this is normal
 - Port forwarding on Deco is required since Flint 2 is behind it
+- After firmware updates, Flint 2 may become unresponsive - power cycle often required
+- 169.254.x.x (APIPA) addresses = DHCP failure, router may be offline
+- Can access GL.iNet router via Deco network IP if LAN is down (unless router is completely offline)
+- Use `ping` to diagnose: if LAN IP and WAN IP both fail, device needs power cycle
 
 ---
 
-*Last Updated: 2024-12-23 19:05*
+*Last Updated: 2024-12-23 ~20:30*
