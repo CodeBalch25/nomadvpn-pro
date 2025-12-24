@@ -77,21 +77,83 @@ iptables -L -n -v | grep 51820
 
 ---
 
-## Current Session Notes
+## Fix 5: Flint 2 Completely Unresponsive
 
-**Date:** 2024-12-23
-**Issue:** VPN connections stopped after Flint 2 config changes
-**IP Status:** Public IP unchanged
+**Symptoms:**
+- Devices connected to Flint 2 LAN get 169.254.x.x (APIPA) addresses
+- Cannot ping Flint 2 on LAN IP
+- Cannot ping Flint 2 on upstream network IP (Deco)
+- Upstream gateway (Deco) responds fine
 
-### What Changed:
-- [ ] Document what settings were modified
+**Diagnosis Steps:**
+```powershell
+# Check if PC is getting DHCP
+ipconfig /all
+# Look for 169.254.x.x = APIPA = no DHCP
 
-### Current Config (to be filled):
-- Tunnel IP: _______________
-- Listen Port: _______________
-- DDNS Domain: _______________
-- Upstream Router IP: _______________
-- Flint 2 LAN IP: _______________
+# Set static IP to test connectivity
+netsh interface ip set address "Ethernet 2" static 192.168.12.100 255.255.255.0 192.168.12.1
 
-### Resolution:
-- [ ] To be documented after fix
+# Ping Flint 2 LAN
+ping 192.168.12.1
+
+# Ping Flint 2 on upstream network (Deco)
+ping 192.168.68.54
+
+# Ping upstream gateway
+ping 192.168.68.1
+```
+
+**Resolution:**
+1. **Power cycle Flint 2** - Unplug for 30 seconds, replug
+2. Wait 2-3 minutes for full boot
+3. Verify DHCP server is enabled: NETWORK → LAN → DHCP Server ON
+4. Set PC back to DHCP: `netsh interface ip set address "Ethernet 2" dhcp`
+5. Verify PC gets proper IP in 192.168.12.x range
+
+**Common Causes:**
+- Firmware update caused hang
+- LAN IP change not fully applied
+- Memory/CPU overload on router
+
+---
+
+## Fix 6: VPN Connected But No Internet
+
+**Symptoms:**
+- WireGuard handshake succeeds (tunnel established)
+- Travel router shows "connected" status
+- No internet access through VPN
+
+**Check on Flint 2 Server:**
+1. VPN Dashboard → WireGuard Server → Settings (gear icon)
+2. Verify: **IP Masquerading** = ON
+3. Verify: **Allow Remote Access LAN** = ON
+4. Verify: VPN Client is OFF (not conflicting)
+5. Verify: AdGuard Home OFF or DNS properly configured
+
+**Check on Travel Router Client:**
+1. VPN Dashboard → WireGuard Client → Settings
+2. **Global Proxy** mode may cause brief outage during reconnection - this is normal
+3. **Block Non-VPN Traffic** should be OFF for testing
+4. MTU should be 1280 for cellular/hotspot connections
+
+---
+
+## Current Working Config (Dec 2024)
+
+**Flint 2 Server:**
+- LAN IP: 192.168.12.1
+- Deco Network IP: 192.168.68.54
+- Tunnel IP: 10.1.0.1/24
+- Listen Port: 51820
+- DDNS: yp61102.glddns.com
+
+**WireGuard Profiles:**
+| Profile | Client IP | Router |
+|---------|-----------|--------|
+| Secure Channel For Work | 10.1.0.2/24 | Beryl AX |
+| Prime Analytics | 10.1.0.3/24 | Slate AX |
+
+**Port Forwarding (Deco):**
+- UDP 51820 → 192.168.68.54:51820
