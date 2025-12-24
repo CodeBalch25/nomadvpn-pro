@@ -84,16 +84,29 @@ NomadVPN Pro is a VPN router setup service targeting digital nomads and remote w
 
 ## Immediate Next Steps
 
-### Today
-1. ✅ Apply GL.iNet Affiliate: https://www.gl-inet.com/affiliate-program/
-2. ✅ Apply GL.iNet Reseller: https://www.gl-inet.com/form/become-a-reseller/
-3. ✅ Create Reddit Account
+### BEFORE GOING LIVE (Critical)
+1. **Verify domain in Resend** - https://resend.com/domains
+   - Add `nomadvpn.pro`
+   - Add DNS records (SPF, DKIM, DMARC)
+   - Currently emails ONLY work for `timbalchtb@gmail.com`
+   - Real customers won't receive auto-replies until verified!
 
-### This Week
-4. Start Reddit commenting (build karma)
-5. Create lead magnet PDF
-6. Set up email capture
-7. Script first YouTube video
+2. **After domain verification, update email settings in `src/lib/email.ts`:**
+   ```
+   FROM_EMAIL = 'NomadVPN Pro <noreply@nomadvpn.pro>'
+   NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'timudai@outlook.com'
+   ```
+
+3. Test Stripe checkout flow
+4. Deploy to Railway
+
+### Marketing (Started)
+- ✅ Apply GL.iNet Affiliate: https://www.gl-inet.com/affiliate-program/
+- ✅ Apply GL.iNet Reseller: https://www.gl-inet.com/form/become-a-reseller/
+- ✅ Create Reddit Account
+- Start Reddit commenting (build karma)
+- Create lead magnet PDF
+- Script first YouTube video
 
 ### Deployment
 - Platform: Railway (recommended)
@@ -102,7 +115,30 @@ NomadVPN Pro is a VPN router setup service targeting digital nomads and remote w
 
 ---
 
+## Session: December 23, 2025
+
+### Completed This Session
+- ✅ Simplified Employment Types (removed enterprise/startup, kept individual-focused options)
+  - Employee (Remote / Hybrid)
+  - Freelance / Self-Employed
+  - Consultant / Contractor
+  - Other
+- ✅ Set up auto-reply emails for customers (Resend)
+- ✅ Set up owner notification emails
+- ✅ Created professional HTML email templates (dark theme, branded)
+- ✅ Added debug logging to email functions
+- ✅ Tested consultation form end-to-end
+- ✅ Created CLAUDE.md project instructions
+- ✅ Created memory folder with session logs
+
+### Known Issues
+- **Resend test mode limitation**: Emails only work for `timbalchtb@gmail.com` until domain is verified
+- Port 3000 sometimes in use, dev server runs on 3001
+
+---
+
 ## Contact Info
 
-- Email: timudai@outlook.com
+- Email: timudai@outlook.com (business)
+- Email: timbalchtb@gmail.com (testing/Resend)
 - Phone: (213) 321-8300
