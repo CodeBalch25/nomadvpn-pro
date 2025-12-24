@@ -63,6 +63,8 @@ Profiles:
 | 19:00 | VPN connection working | Verified |
 | 19:05 | Starting Flint 2 firmware update | In Progress |
 | 19:XX | Flint 2 firmware updated, LAN IP changed to 192.168.12.1 | Done |
+| 19:XX | Diagnosed AXT1800 dropping - REKEY-GIVEUP errors in logs | Found |
+| 19:XX | Changed AXT1800 WireGuard MTU from 1420 to 1280 | Applied |
 
 ---
 
