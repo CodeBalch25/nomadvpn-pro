@@ -53,7 +53,7 @@ export const consultationFormSchema = z.object({
     .max(500, 'Please keep your response under 500 characters')
     .optional(),
   employerType: z
-    .enum(['enterprise', 'startup', 'freelance', 'other'])
+    .enum(['employee', 'freelance', 'consultant', 'other'])
     .optional(),
   serviceInterest: z
     .enum(['essential', 'premium', 'remote']),

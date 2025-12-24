@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/db'
 import { contactFormSchema } from '@/lib/validations'
-import { sendContactNotification } from '@/lib/email'
+import { sendContactAutoReply } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,8 +22,8 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    // Send email notification
-    await sendContactNotification({
+    // Send auto-reply to customer + notification to owner
+    await sendContactAutoReply({
       name: validatedData.name,
       email: validatedData.email,
       phone: validatedData.phone,

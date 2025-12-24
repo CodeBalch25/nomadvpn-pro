@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/db'
 import { consultationFormSchema } from '@/lib/validations'
-import { sendConsultationNotification } from '@/lib/email'
+import { sendConsultationAutoReply } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,20 +30,18 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    // Send email notification
-    await sendConsultationNotification({
+    // Send auto-reply to customer + notification to owner
+    await sendConsultationAutoReply({
       name: validatedData.name,
       email: validatedData.email,
       phone: validatedData.phone,
+      serviceInterest: validatedData.serviceInterest,
       preferredDate: validatedData.preferredDate
         ? new Date(validatedData.preferredDate)
         : null,
       timezone: validatedData.timezone,
       homeIsp: validatedData.homeIsp,
-      currentSetup: validatedData.currentSetup,
-      travelPlans: validatedData.travelPlans,
       employerType: validatedData.employerType,
-      serviceInterest: validatedData.serviceInterest,
       notes: validatedData.notes,
     })
 

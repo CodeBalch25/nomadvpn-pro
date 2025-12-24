@@ -232,7 +232,7 @@ export function ConsultationForm() {
               <Label htmlFor="employerType">Type of Employment</Label>
               <Select
                 value={employerType}
-                onValueChange={(value: 'enterprise' | 'startup' | 'freelance' | 'other') =>
+                onValueChange={(value: 'employee' | 'freelance' | 'consultant' | 'other') =>
                   setValue('employerType', value)
                 }
               >
@@ -240,9 +240,9 @@ export function ConsultationForm() {
                   <SelectValue placeholder="Select employment type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="enterprise">Enterprise / Large Company</SelectItem>
-                  <SelectItem value="startup">Startup / Small Business</SelectItem>
-                  <SelectItem value="freelance">Freelance / Contractor</SelectItem>
+                  <SelectItem value="employee">Employee (Remote / Hybrid)</SelectItem>
+                  <SelectItem value="freelance">Freelance / Self-Employed</SelectItem>
+                  <SelectItem value="consultant">Consultant / Contractor</SelectItem>
                   <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
