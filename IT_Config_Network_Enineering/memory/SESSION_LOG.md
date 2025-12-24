@@ -62,6 +62,7 @@ Profiles:
 | 18:45 | Uploaded correct config with DDNS | Success |
 | 19:00 | VPN connection working | Verified |
 | 19:05 | Starting Flint 2 firmware update | In Progress |
+| 19:XX | Flint 2 firmware updated, LAN IP changed to 192.168.12.1 | Done |
 
 ---
 
