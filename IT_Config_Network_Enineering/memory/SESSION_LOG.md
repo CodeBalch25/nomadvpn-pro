@@ -23,7 +23,7 @@
 
 | Device | Model | IP (LAN) | IP (Deco Network) | Role | Firmware |
 |--------|-------|----------|-------------------|------|----------|
-| Flint 2 | GL-MT6000 | 192.168.8.1 | 192.168.68.54 | WireGuard Server | v4.8.3 |
+| Flint 2 | GL-MT6000 | 192.168.12.1 | 192.168.68.54 | WireGuard Server | Updated |
 | Slate AX | GL-AXT1800 | 192.168.9.1 | - | Travel Router | v4.7.0 |
 | Beryl AX | GL-MT3000 | 192.168.8.1 | - | Travel Router | TBD |
 | Deco Mesh | TP-Link | 192.168.68.1 | - | Main Router | - |
