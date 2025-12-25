@@ -1,0 +1,28 @@
+
+> nomadvpn-pro@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.18
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1303ms
+ ○ Compiling /compatibility ...
+ ✓ Compiled /compatibility in 3.5s (787 modules)
+ GET /compatibility 200 in 3684ms
+ ✓ Compiled in 399ms (386 modules)
+ ✓ Compiled /services in 420ms (700 modules)
+ GET /services 200 in 589ms
+ GET /services 200 in 38ms
+ GET /services 200 in 58ms
+ GET /services 200 in 48ms
+ GET /services 200 in 69ms
+ GET /services 200 in 47ms
+ GET /services 200 in 32ms
+ ✓ Compiled in 1144ms (398 modules)
+ ✓ Compiled in 148ms (398 modules)
+ ✓ Compiled in 115ms (398 modules)
+ ✓ Compiled in 126ms (398 modules)
+ ✓ Compiled in 115ms (398 modules)
+ ✓ Compiled in 135ms (398 modules)

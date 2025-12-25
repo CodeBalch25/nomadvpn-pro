@@ -16,22 +16,6 @@ export function getStripe(): Stripe {
   return stripeInstance
 }
 
-// For backwards compatibility - but prefer getStripe()
-export const stripe = {
-  get checkout() {
-    return getStripe().checkout
-  },
-  get customers() {
-    return getStripe().customers
-  },
-  get subscriptions() {
-    return getStripe().subscriptions
-  },
-  get paymentIntents() {
-    return getStripe().paymentIntents
-  },
-}
-
 export const SERVICES = {
   'essential-setup': {
     name: 'Essential Setup',

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { stripe, SERVICES, ServiceId } from '@/lib/stripe'
+import { getStripe, SERVICES, ServiceId } from '@/lib/stripe'
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,6 +16,7 @@ export async function POST(request: NextRequest) {
 
     const service = SERVICES[serviceId as ServiceId]
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    const stripe = getStripe()
 
     if (service.priceType === 'subscription') {
       // Create subscription checkout session
