@@ -26,7 +26,7 @@ const SERVICES: Record<string, { name: string; price: string; description: strin
     name: 'Complex Setup',
     price: '$899',
     description: 'Extended setup for mesh WiFi, double NAT, or challenging ISP configurations',
-    stripeServiceId: 'essential-setup',
+    stripeServiceId: 'complex-setup',
   },
   'premium-bundle': {
     name: 'Premium Bundle',
