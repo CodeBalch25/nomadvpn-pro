@@ -97,11 +97,11 @@ export default function CheckoutSuccessPage() {
                   (213) 321-8300
                 </a>
                 <a
-                  href="mailto:timudai@outlook.com"
+                  href="mailto:support@nomadvpnpro.com"
                   className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail className="h-4 w-4" />
-                  timudai@outlook.com
+                  support@nomadvpnpro.com
                 </a>
               </div>
             </CardContent>

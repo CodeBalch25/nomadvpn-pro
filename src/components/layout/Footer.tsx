@@ -35,8 +35,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs">
-              Enterprise-grade VPN solutions for digital nomads and remote workers.
-              Work from anywhere with confidence.
+              Pre-configured VPN routers for digital nomads and remote workers.
+              Secure access to your home network from anywhere.
             </p>
             <div className="mt-6 space-y-2">
               <div className="flex items-center text-sm text-muted-foreground">
@@ -47,8 +47,8 @@ export function Footer() {
               </div>
               <div className="flex items-center text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 mr-2 text-primary" />
-                <a href="mailto:timudai@outlook.com" className="hover:text-foreground transition-colors">
-                  timudai@outlook.com
+                <a href="mailto:support@nomadvpnpro.com" className="hover:text-foreground transition-colors">
+                  support@nomadvpnpro.com
                 </a>
               </div>
               <div className="flex items-center text-sm text-muted-foreground">
