@@ -19,27 +19,44 @@ export async function POST(request: NextRequest) {
     const stripe = getStripe()
 
     if (service.priceType === 'subscription') {
-      // Create subscription checkout session
+      // Create subscription checkout session with optional setup fee
+      const lineItems: any[] = [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: service.name,
+              description: service.description,
+            },
+            unit_amount: service.price,
+            recurring: {
+              interval: 'month',
+            },
+          },
+          quantity: 1,
+        },
+      ]
+
+      // Add one-time setup fee if applicable
+      if ('setupPrice' in service && service.setupPrice) {
+        lineItems.push({
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: `${service.name} - Setup Fee`,
+              description: 'One-time setup fee includes pre-configured travel router',
+            },
+            unit_amount: service.setupPrice,
+          },
+          quantity: 1,
+        })
+      }
+
       const session = await stripe.checkout.sessions.create({
         mode: 'subscription',
         payment_method_types: ['card'],
         customer_email: customerEmail,
-        line_items: [
-          {
-            price_data: {
-              currency: 'usd',
-              product_data: {
-                name: service.name,
-                description: service.description,
-              },
-              unit_amount: service.price,
-              recurring: {
-                interval: 'month',
-              },
-            },
-            quantity: 1,
-          },
-        ],
+        line_items: lineItems,
         metadata: {
           serviceId,
           customerName: customerName || '',

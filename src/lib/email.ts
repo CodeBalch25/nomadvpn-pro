@@ -2,12 +2,9 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-// Use Resend's test address until domain is verified
-// Change to 'NomadVPN Pro <hello@nomadvpn.pro>' after domain verification
-const FROM_EMAIL = 'NomadVPN Pro <onboarding@resend.dev>'
-// Using Gmail for testing until domain is verified in Resend
-// Change back to: process.env.NOTIFY_EMAIL || 'timudai@outlook.com' after domain verification
-const NOTIFY_EMAIL = 'timbalchtb@gmail.com'
+// Domain verified in Resend - using production email
+const FROM_EMAIL = 'NomadVPN Pro <noreply@nomadvpnpro.com>'
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'timbalchtb@gmail.com'
 
 export async function sendContactAutoReply(data: {
   name: string
@@ -106,7 +103,7 @@ export async function sendContactAutoReply(data: {
                     <td style="padding: 24px 40px; background: rgba(0,0,0,0.3); border-top: 1px solid #2a2a3e;">
                       <p style="color: #71717a; font-size: 12px; line-height: 1.5; margin: 0; text-align: center;">
                         NomadVPN Pro &bull; Secure Remote Work Solutions<br>
-                        <a href="https://nomadvpn.pro" style="color: #06b6d4; text-decoration: none;">nomadvpn.pro</a>
+                        <a href="https://nomadvpnpro.com" style="color: #06b6d4; text-decoration: none;">nomadvpn.pro</a>
                       </p>
                     </td>
                   </tr>
@@ -391,7 +388,7 @@ export async function sendConsultationAutoReply(data: {
                     <td style="padding: 24px 40px; background: rgba(0,0,0,0.3); border-top: 1px solid #2a2a3e;">
                       <p style="color: #71717a; font-size: 12px; line-height: 1.5; margin: 0; text-align: center;">
                         NomadVPN Pro &bull; Secure Remote Work Solutions<br>
-                        <a href="https://nomadvpn.pro" style="color: #06b6d4; text-decoration: none;">nomadvpn.pro</a>
+                        <a href="https://nomadvpnpro.com" style="color: #06b6d4; text-decoration: none;">nomadvpn.pro</a>
                       </p>
                     </td>
                   </tr>
@@ -695,7 +692,7 @@ export async function sendOrderConfirmation(data: {
                     <td style="padding: 24px 40px; background: rgba(0,0,0,0.3); border-top: 1px solid #2a2a3e;">
                       <p style="color: #71717a; font-size: 12px; line-height: 1.5; margin: 0; text-align: center;">
                         NomadVPN Pro &bull; Secure Remote Work Solutions<br>
-                        <a href="https://nomadvpn.pro" style="color: #06b6d4; text-decoration: none;">nomadvpn.pro</a>
+                        <a href="https://nomadvpnpro.com" style="color: #06b6d4; text-decoration: none;">nomadvpn.pro</a>
                       </p>
                     </td>
                   </tr>

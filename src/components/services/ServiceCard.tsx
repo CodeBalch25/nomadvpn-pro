@@ -136,12 +136,14 @@ export function ServiceCard({
           variant={highlighted ? 'gradient' : 'default'}
           size="default"
         >
-          <Link href={`/consultation?service=${slug}`}>
-            Get Started
+          <Link href={`/checkout?service=${slug}`}>
+            Buy Now
           </Link>
         </Button>
-        <Button asChild variant="ghost" className="w-full" size="sm">
-          <Link href="/consultation">Questions? Book a call</Link>
+        <Button asChild variant="outline" className="w-full" size="sm">
+          <Link href={`/consultation?service=${slug}`}>
+            Book Free Consultation
+          </Link>
         </Button>
       </CardFooter>
     </Card>

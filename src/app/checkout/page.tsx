@@ -9,21 +9,30 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-const SERVICES: Record<string, { name: string; price: string; description: string }> = {
-  'essential-setup': {
-    name: 'Essential Setup',
-    price: '$699',
-    description: 'Pre-configured Flint 2 + Beryl AX routers with WireGuard VPN setup',
-  },
-  'premium-support': {
-    name: 'Premium + Support',
-    price: '$1,299',
-    description: 'Full setup with 6 months of dedicated priority support',
-  },
+const SERVICES: Record<string, { name: string; price: string; description: string; stripeServiceId: string }> = {
   'remote-vpn-access': {
     name: 'Remote VPN Access',
-    price: '$49/mo',
-    description: 'Monthly access with pre-programmed travel router',
+    price: '$35/mo + $149 setup',
+    description: 'Works with ANY ISP - pre-configured travel router connects to our managed VPN servers',
+    stripeServiceId: 'remote-vpn-access',
+  },
+  'easy-setup': {
+    name: 'Easy Setup',
+    price: '$699',
+    description: 'Pre-configured Flint 2 + Beryl AX routers with remote Zoom setup session',
+    stripeServiceId: 'essential-setup',
+  },
+  'complex-setup': {
+    name: 'Complex Setup',
+    price: '$899',
+    description: 'Extended setup for mesh WiFi, double NAT, or challenging ISP configurations',
+    stripeServiceId: 'essential-setup',
+  },
+  'premium-bundle': {
+    name: 'Premium Bundle',
+    price: '$1,499',
+    description: 'Complete turnkey solution with mesh system - just plug in and go',
+    stripeServiceId: 'premium-support',
   },
 }
 
@@ -65,7 +74,7 @@ export default function CheckoutPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          serviceId,
+          serviceId: service.stripeServiceId,
           customerEmail: email,
           customerName: name,
         }),

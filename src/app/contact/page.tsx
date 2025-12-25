@@ -20,8 +20,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email',
-    value: 'timudai@outlook.com',
-    href: 'mailto:timudai@outlook.com',
+    value: 'support@nomadvpnpro.com',
+    href: 'mailto:support@nomadvpnpro.com',
   },
   {
     icon: Clock,
