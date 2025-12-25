@@ -55,7 +55,7 @@ const credentials = [
   {
     icon: Code,
     title: 'Technical Background',
-    description: 'Data science and software engineering expertise ensuring reliable solutions.',
+    description: 'Network engineering, data science, and software development expertise ensuring reliable solutions.',
   },
   {
     icon: Globe,
