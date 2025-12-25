@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Loader2, Calendar, CheckCircle, ArrowLeft, ArrowRight } from 'lucide-react'
+import { Loader2, Calendar, CheckCircle, ArrowLeft, ArrowRight, AlertTriangle, Wifi } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -15,12 +15,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { consultationFormSchema, type ConsultationFormData } from '@/lib/validations'
+import {
+  consultationFormSchema,
+  type ConsultationFormData,
+  ispOptions,
+  uploadSpeedOptions,
+  technicalComfortOptions,
+  getRecommendedTier,
+  serviceTiers
+} from '@/lib/validations'
 
 const steps = [
   { id: 1, title: 'Contact Info' },
-  { id: 2, title: 'Your Situation' },
-  { id: 3, title: 'Service Interest' },
+  { id: 2, title: 'Your Setup' },
+  { id: 3, title: 'Recommendation' },
 ]
 
 const timezones = [
@@ -51,12 +59,34 @@ export function ConsultationForm() {
   } = useForm<ConsultationFormData>({
     resolver: zodResolver(consultationFormSchema),
     defaultValues: {
-      serviceInterest: 'premium',
+      serviceInterest: 'consultation',
     },
   })
 
   const serviceInterest = watch('serviceInterest')
   const employerType = watch('employerType')
+  const homeIsp = watch('homeIsp')
+  const hasMeshWifi = watch('hasMeshWifi')
+  const uploadSpeed = watch('uploadSpeed')
+  const technicalComfort = watch('technicalComfort')
+
+  // Get recommended tier based on current form values
+  const recommendation = getRecommendedTier({
+    isp: homeIsp,
+    hasMeshWifi: hasMeshWifi,
+    uploadSpeed: uploadSpeed,
+    technicalComfort: technicalComfort,
+  })
+
+  // Auto-update service interest when recommendation changes
+  useEffect(() => {
+    if (homeIsp && recommendation.tier !== 'consultation') {
+      setValue('serviceInterest', recommendation.tier)
+    }
+  }, [homeIsp, hasMeshWifi, uploadSpeed, technicalComfort, recommendation.tier, setValue])
+
+  // Check if ISP is CGNAT (incompatible with self-hosted)
+  const isCgnatIsp = ['tmobile_5g', 'verizon_5g', 'starlink', 'fixed_wireless'].includes(homeIsp || '')
 
   const nextStep = async () => {
     let fieldsToValidate: (keyof ConsultationFormData)[] = []
@@ -225,15 +255,126 @@ export function ConsultationForm() {
           </div>
         )}
 
-        {/* Step 2: Your Situation */}
+        {/* Step 2: Your Setup */}
         {currentStep === 2 && (
           <div className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="homeIsp">Home Internet Provider (ISP) *</Label>
+              <Select
+                value={homeIsp}
+                onValueChange={(value) =>
+                  setValue('homeIsp', value as ConsultationFormData['homeIsp'])
+                }
+              >
+                <SelectTrigger className={errors.homeIsp ? 'border-destructive' : ''}>
+                  <SelectValue placeholder="Select your ISP" />
+                </SelectTrigger>
+                <SelectContent>
+                  {ispOptions.map((isp) => (
+                    <SelectItem key={isp.value} value={isp.value}>
+                      {isp.label}
+                      {isp.tier === 'remote_only' && (
+                        <span className="ml-2 text-xs text-amber-500">(CGNAT)</span>
+                      )}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-muted-foreground">
+                This helps us determine the best setup option for you.
+              </p>
+              {errors.homeIsp && (
+                <p className="text-sm text-destructive">{errors.homeIsp.message}</p>
+              )}
+            </div>
+
+            {/* CGNAT Warning */}
+            {isCgnatIsp && (
+              <div className="p-4 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                <div className="flex gap-3">
+                  <AlertTriangle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-medium text-amber-500">CGNAT Detected</p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Your ISP uses Carrier-Grade NAT, which prevents hosting a VPN server at home.
+                      Our Remote VPN Access service is designed specifically for this situation -
+                      we handle everything for you.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="space-y-2">
+              <Label htmlFor="hasMeshWifi">Do you have a mesh WiFi system?</Label>
+              <Select
+                value={hasMeshWifi}
+                onValueChange={(value) =>
+                  setValue('hasMeshWifi', value as 'yes' | 'no' | 'unknown')
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select an option" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="no">No, I use my ISP router only</SelectItem>
+                  <SelectItem value="yes">Yes (Google Nest, Eero, Orbi, Deco, etc.)</SelectItem>
+                  <SelectItem value="unknown">I'm not sure</SelectItem>
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-muted-foreground">
+                Mesh systems like Google Nest WiFi, Eero, or Orbi require additional configuration.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="uploadSpeed">Upload Speed</Label>
+              <Select
+                value={uploadSpeed}
+                onValueChange={(value) =>
+                  setValue('uploadSpeed', value as ConsultationFormData['uploadSpeed'])
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Check at speedtest.net" />
+                </SelectTrigger>
+                <SelectContent>
+                  {uploadSpeedOptions.map((speed) => (
+                    <SelectItem key={speed.value} value={speed.value}>
+                      {speed.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="technicalComfort">Technical Comfort Level</Label>
+              <Select
+                value={technicalComfort}
+                onValueChange={(value) =>
+                  setValue('technicalComfort', value as ConsultationFormData['technicalComfort'])
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="How comfortable are you with router settings?" />
+                </SelectTrigger>
+                <SelectContent>
+                  {technicalComfortOptions.map((level) => (
+                    <SelectItem key={level.value} value={level.value}>
+                      {level.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="employerType">Type of Employment</Label>
               <Select
                 value={employerType}
-                onValueChange={(value: 'employee' | 'freelance' | 'consultant' | 'other') =>
-                  setValue('employerType', value)
+                onValueChange={(value) =>
+                  setValue('employerType', value as 'employee' | 'freelance' | 'consultant' | 'other')
                 }
               >
                 <SelectTrigger>
@@ -249,77 +390,81 @@ export function ConsultationForm() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="homeIsp">Home Internet Provider (ISP) *</Label>
-              <Input
-                id="homeIsp"
-                placeholder="e.g., Comcast, AT&T, Verizon, Spectrum, etc."
-                {...register('homeIsp')}
-                className={errors.homeIsp ? 'border-destructive' : ''}
-              />
-              <p className="text-xs text-muted-foreground">
-                This helps us ensure your home internet is compatible with the VPN setup.
-              </p>
-              {errors.homeIsp && (
-                <p className="text-sm text-destructive">{errors.homeIsp.message}</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="currentSetup">Current VPN/Router Setup</Label>
-              <Textarea
-                id="currentSetup"
-                placeholder="What VPN or router solutions are you currently using, if any?"
-                rows={3}
-                {...register('currentSetup')}
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="travelPlans">Travel Plans</Label>
+              <Label htmlFor="travelPlans">Travel Plans (optional)</Label>
               <Textarea
                 id="travelPlans"
-                placeholder="Where are you planning to travel or work from? Any specific countries or regions?"
-                rows={3}
+                placeholder="Where are you planning to travel or work from?"
+                rows={2}
                 {...register('travelPlans')}
               />
             </div>
           </div>
         )}
 
-        {/* Step 3: Service Interest */}
+        {/* Step 3: Recommendation */}
         {currentStep === 3 && (
           <div className="space-y-6">
+            {/* Show recommendation based on their setup */}
+            {homeIsp && recommendation.tier !== 'consultation' && (
+              <div className="p-4 rounded-lg bg-primary/10 border border-primary/20">
+                <div className="flex gap-3">
+                  <Wifi className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-medium text-primary">Recommended for You</p>
+                    <p className="text-sm text-muted-foreground mt-1">{recommendation.reason}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="space-y-2">
-              <Label>Which service interests you most? *</Label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+              <Label>Select your preferred service *</Label>
+              <div className="grid grid-cols-1 gap-3 mt-2">
                 {[
-                  { value: 'essential', label: 'Essential Setup', price: '$699' },
-                  { value: 'premium', label: 'Premium + Support', price: '$1,299' },
-                  { value: 'remote', label: 'Remote VPN Access', price: '$49/mo' },
+                  { value: 'remote_vpn_access', label: 'Remote VPN Access', price: '$149 setup + $35/mo', desc: 'Works with ANY ISP' },
+                  { value: 'easy_setup', label: 'Easy Setup', price: '$699', desc: 'For compatible ISPs', disabled: isCgnatIsp },
+                  { value: 'complex_setup', label: 'Complex Setup', price: '$899', desc: 'For mesh WiFi setups', disabled: isCgnatIsp },
+                  { value: 'premium_bundle', label: 'Premium Bundle', price: '$1,499', desc: 'Complete turnkey solution', disabled: isCgnatIsp },
                 ].map((service) => (
                   <button
                     key={service.value}
                     type="button"
+                    disabled={service.disabled}
                     onClick={() => setValue('serviceInterest', service.value as ConsultationFormData['serviceInterest'])}
                     className={`p-4 rounded-lg border text-left transition-colors ${
                       serviceInterest === service.value
                         ? 'border-primary bg-primary/10'
+                        : service.disabled
+                        ? 'border-border/50 opacity-50 cursor-not-allowed'
                         : 'border-border hover:border-primary/50'
-                    }`}
+                    } ${recommendation.tier === service.value ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : ''}`}
                   >
-                    <div className="font-medium">{service.label}</div>
-                    <div className="text-sm text-muted-foreground">{service.price}</div>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <div className="font-medium flex items-center gap-2">
+                          {service.label}
+                          {recommendation.tier === service.value && (
+                            <span className="text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded">Recommended</span>
+                          )}
+                        </div>
+                        <div className="text-sm text-muted-foreground">{service.desc}</div>
+                      </div>
+                      <div className="text-sm font-medium text-primary">{service.price}</div>
+                    </div>
+                    {service.disabled && (
+                      <p className="text-xs text-amber-500 mt-2">Not available for your ISP (requires Remote VPN Access)</p>
+                    )}
                   </button>
                 ))}
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="notes">Additional Notes</Label>
+              <Label htmlFor="notes">Additional Notes (optional)</Label>
               <Textarea
                 id="notes"
-                placeholder="Anything else you'd like us to know before our consultation?"
-                rows={4}
+                placeholder="Anything else you'd like us to know?"
+                rows={3}
                 {...register('notes')}
               />
             </div>

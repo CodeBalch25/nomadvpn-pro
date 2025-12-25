@@ -30,11 +30,15 @@ model Consultation {
   phone           String?
   preferredDate   DateTime?
   timezone        String?
-  homeIsp         String?   // Home internet service provider (Comcast, AT&T, etc.)
+  homeIsp         String?   // ISP slug (xfinity, spectrum, tmobile_5g, etc.)
+  hasMeshWifi     String?   // yes, no, unknown
+  uploadSpeed     String?   // under_10, 10_25, 25_100, over_100, unknown
+  technicalComfort String?  // expert, moderate, beginner
   currentSetup    String?   // What VPN/router they currently use
   travelPlans     String?   // Where they plan to travel
-  employerType    String?   // enterprise, startup, freelance, other
-  serviceInterest String    // essential, premium, remote
+  employerType    String?   // employee, freelance, consultant, other
+  serviceInterest String    // remote_vpn_access, easy_setup, complex_setup, premium_bundle, consultation
+  recommendedTier String?   // System-recommended tier based on their setup
   notes           String?
   status          String    @default("pending") // pending, confirmed, completed, cancelled
   createdAt       DateTime  @default(now())
@@ -44,6 +48,7 @@ model Consultation {
   @@index([status])
   @@index([preferredDate])
   @@index([createdAt])
+  @@index([homeIsp])
 }
 
 model Service {
@@ -103,5 +108,44 @@ model Order {
 
   @@index([customerEmail])
   @@index([status])
+  @@index([createdAt])
+}
+
+// ISP Compatibility Reference Table
+model IspCompatibility {
+  id              String   @id @default(cuid())
+  ispName         String   @unique  // Display name (e.g., "Xfinity/Comcast")
+  ispSlug         String   @unique  // URL-safe slug (e.g., "xfinity")
+  connectionType  String             // fiber, cable, dsl, fixed_wireless, satellite, 5g_home
+  hasCgnat        Boolean  @default(false)  // Whether ISP uses CGNAT
+  portForwardMethod String?          // How to set up port forwarding
+  difficultyScore Int      @default(1)  // 1-5 scale (1=easy, 5=impossible/CGNAT)
+  recommendedTier String?            // Suggested service tier
+  notes           String?  @db.Text
+  active          Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([ispSlug])
+  @@index([hasCgnat])
+  @@index([difficultyScore])
+}
+
+// Compatibility Check Submissions (for lead capture)
+model CompatibilityCheck {
+  id              String   @id @default(cuid())
+  email           String?
+  ispSelected     String              // ISP slug they selected
+  hasMeshWifi     String?             // yes, no, unknown
+  uploadSpeed     String?             // under_10, 10_25, 25_100, over_100, unknown
+  technicalLevel  String?             // expert, moderate, beginner
+  recommendedTier String              // System recommendation
+  canDiy          Boolean?            // Whether they can do DIY setup
+  convertedToLead Boolean  @default(false)
+  createdAt       DateTime @default(now())
+
+  @@index([email])
+  @@index([ispSelected])
+  @@index([recommendedTier])
   @@index([createdAt])
 }

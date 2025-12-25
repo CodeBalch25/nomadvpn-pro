@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Shield, Wifi, Globe } from 'lucide-react'
+import { ArrowRight, Shield, Wifi, Globe, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export function Hero() {
@@ -27,7 +27,7 @@ export function Hero() {
           >
             <Shield className="h-4 w-4 text-primary" />
             <span className="text-sm font-medium text-primary">
-              Secure. Reliable. Enterprise-Grade Protection.
+              Works with 85% of US Internet Providers
             </span>
           </motion.div>
 
@@ -65,8 +65,8 @@ export function Hero() {
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button asChild size="xl" variant="gradient">
-              <Link href="/services" className="group">
-                View Services
+              <Link href="/compatibility" className="group">
+                Check Your ISP
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
@@ -75,6 +75,38 @@ export function Hero() {
                 Book Free Consultation
               </Link>
             </Button>
+          </motion.div>
+
+          {/* ISP Trust Signals */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground"
+          >
+            <div className="flex items-center gap-1.5">
+              <CheckCircle className="h-4 w-4 text-emerald-500" />
+              <span>Xfinity</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <CheckCircle className="h-4 w-4 text-emerald-500" />
+              <span>Spectrum</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <CheckCircle className="h-4 w-4 text-emerald-500" />
+              <span>AT&T Fiber</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <CheckCircle className="h-4 w-4 text-emerald-500" />
+              <span>Verizon Fios</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <CheckCircle className="h-4 w-4 text-emerald-500" />
+              <span>Google Fiber</span>
+            </div>
+            <Link href="/compatibility" className="text-primary hover:underline">
+              + more
+            </Link>
           </motion.div>
 
           {/* Stats */}

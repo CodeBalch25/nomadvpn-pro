@@ -2,54 +2,70 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Check, Star } from 'lucide-react'
+import { ArrowRight, Check, Star, Wifi, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 
 const services = [
   {
-    name: 'Essential Setup',
-    price: '$699',
-    priceNote: 'one-time',
-    description: 'Everything you need to work remotely from anywhere',
-    features: [
-      'Pre-configured Flint 2 + Beryl AX',
-      'WireGuard VPN server setup',
-      'Kill switch protection',
-      '30-day email support',
-    ],
-    href: '/services#essential-setup',
-    highlighted: false,
-  },
-  {
-    name: 'Premium + Support',
-    price: '$1,299',
-    priceNote: 'one-time',
-    description: 'Full setup with 6 months of dedicated support',
-    features: [
-      'Everything in Essential',
-      '6 months priority support',
-      'Connection monitoring',
-      'Emergency remote assistance',
-    ],
-    href: '/services#premium-support',
-    highlighted: true,
-    badge: 'Most Popular',
-  },
-  {
     name: 'Remote VPN Access',
-    price: '$49',
-    priceNote: '/month',
-    description: 'We ship you a pre-programmed router. Just plug in and go.',
+    price: '$35',
+    priceNote: '/mo',
+    setupNote: '+ $149 setup',
+    description: 'Works with ANY ISP - we handle everything',
     features: [
-      'Pre-programmed router shipped to you',
-      'Plug into WiFi or ethernet',
-      'Residential US IP address',
+      'Works with ANY ISP (even CGNAT)',
+      'Pre-configured travel router shipped',
+      'US residential IP address',
       'Cancel anytime',
     ],
     href: '/services#remote-vpn-access',
+    highlighted: true,
+    badge: 'Recommended',
+  },
+  {
+    name: 'Easy Setup',
+    price: '$699',
+    priceNote: 'one-time',
+    description: 'For fiber & cable customers with straightforward setups',
+    features: [
+      'Pre-configured Flint 2 + Beryl AX',
+      'Remote setup session via Zoom',
+      'WireGuard VPN configuration',
+      '30-day email support',
+    ],
+    href: '/services#easy-setup',
     highlighted: false,
+  },
+  {
+    name: 'Complex Setup',
+    price: '$899',
+    priceNote: 'one-time',
+    description: 'For mesh WiFi or tricky ISP configurations',
+    features: [
+      'Everything in Easy Setup',
+      'Mesh WiFi bridge mode config',
+      'Double NAT troubleshooting',
+      '60-day priority support',
+    ],
+    href: '/services#complex-setup',
+    highlighted: false,
+  },
+  {
+    name: 'Premium Bundle',
+    price: '$1,499',
+    priceNote: 'one-time',
+    description: 'Complete turnkey solution - just plug in and go',
+    features: [
+      'Includes Deco mesh system',
+      'Complete network stack shipped',
+      '6 months priority support',
+      'Emergency remote assistance',
+    ],
+    href: '/services#premium-bundle',
+    highlighted: false,
+    badge: 'Full Service',
   },
 ]
 
@@ -86,10 +102,10 @@ export function ServicePreview() {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold">
-            Choose Your <span className="gradient-text">Freedom</span>
+            Choose Your <span className="gradient-text">Setup</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            From plug-and-play setups to fully managed solutions.
+            Works with 85% of US home internet providers.
             Get started in days, not weeks.
           </p>
         </motion.div>
@@ -99,12 +115,12 @@ export function ServicePreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+          className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
         >
           {services.map((service) => (
             <motion.div key={service.name} variants={itemVariants}>
               <Card
-                className={`h-full relative ${
+                className={`h-full relative flex flex-col ${
                   service.highlighted
                     ? 'border-primary/50 bg-card shadow-lg shadow-primary/10'
                     : 'bg-card/50 border-border/50'
@@ -112,32 +128,37 @@ export function ServicePreview() {
               >
                 {service.badge && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-primary text-primary-foreground">
-                      <Star className="h-3 w-3 mr-1" />
+                    <Badge className={service.highlighted ? 'bg-primary text-primary-foreground' : 'bg-accent text-accent-foreground'}>
+                      {service.highlighted ? <Star className="h-3 w-3 mr-1" /> : <Zap className="h-3 w-3 mr-1" />}
                       {service.badge}
                     </Badge>
                   </div>
                 )}
 
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-xl">{service.name}</CardTitle>
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg">{service.name}</CardTitle>
                   <div className="mt-2">
-                    <span className="text-4xl font-bold">{service.price}</span>
-                    <span className="text-muted-foreground ml-2">
+                    <span className="text-3xl font-bold">{service.price}</span>
+                    <span className="text-muted-foreground text-sm ml-1">
                       {service.priceNote}
                     </span>
+                    {service.setupNote && (
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {service.setupNote}
+                      </p>
+                    )}
                   </div>
-                  <p className="text-sm text-muted-foreground mt-2">
+                  <p className="text-xs text-muted-foreground mt-2">
                     {service.description}
                   </p>
                 </CardHeader>
 
-                <CardContent className="pb-4">
-                  <ul className="space-y-3">
+                <CardContent className="pb-4 flex-grow">
+                  <ul className="space-y-2">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2">
-                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-muted-foreground">
+                        <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-xs text-muted-foreground">
                           {feature}
                         </span>
                       </li>
@@ -145,11 +166,12 @@ export function ServicePreview() {
                   </ul>
                 </CardContent>
 
-                <CardFooter>
+                <CardFooter className="mt-auto">
                   <Button
                     asChild
                     className="w-full"
                     variant={service.highlighted ? 'gradient' : 'outline'}
+                    size="sm"
                   >
                     <Link href={service.href}>
                       Learn More

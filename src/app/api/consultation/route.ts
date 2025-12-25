@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/db'
-import { consultationFormSchema } from '@/lib/validations'
+import { consultationFormSchema, getRecommendedTier } from '@/lib/validations'
 import { sendConsultationAutoReply } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
@@ -9,6 +9,14 @@ export async function POST(request: NextRequest) {
 
     // Validate input
     const validatedData = consultationFormSchema.parse(body)
+
+    // Calculate recommended tier based on their setup
+    const recommendation = getRecommendedTier({
+      isp: validatedData.homeIsp,
+      hasMeshWifi: validatedData.hasMeshWifi,
+      uploadSpeed: validatedData.uploadSpeed,
+      technicalComfort: validatedData.technicalComfort,
+    })
 
     // Create consultation request in database
     const consultation = await prisma.consultation.create({
@@ -21,10 +29,14 @@ export async function POST(request: NextRequest) {
           : null,
         timezone: validatedData.timezone || null,
         homeIsp: validatedData.homeIsp || null,
+        hasMeshWifi: validatedData.hasMeshWifi || null,
+        uploadSpeed: validatedData.uploadSpeed || null,
+        technicalComfort: validatedData.technicalComfort || null,
         currentSetup: validatedData.currentSetup || null,
         travelPlans: validatedData.travelPlans || null,
         employerType: validatedData.employerType || null,
         serviceInterest: validatedData.serviceInterest,
+        recommendedTier: recommendation.tier,
         notes: validatedData.notes || null,
         status: 'pending',
       },
@@ -41,6 +53,9 @@ export async function POST(request: NextRequest) {
         : null,
       timezone: validatedData.timezone,
       homeIsp: validatedData.homeIsp,
+      hasMeshWifi: validatedData.hasMeshWifi,
+      uploadSpeed: validatedData.uploadSpeed,
+      technicalComfort: validatedData.technicalComfort,
       employerType: validatedData.employerType,
       notes: validatedData.notes,
     })
