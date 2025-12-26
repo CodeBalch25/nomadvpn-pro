@@ -96,20 +96,22 @@ Create a new session log for each working session:
 ```
 [Action] [what changed]
 
-Co-Authored-By: Timothy Balch <timbalchtb@gmail.com>
+- Bullet points for details (optional)
 ```
 
 ### Example Commits:
 ```
 Fix share button with Web Share API and clipboard fallback
 
-Co-Authored-By: Timothy Balch <timbalchtb@gmail.com>
+- Create ShareButton client component with proper onClick handler
+- Use Web Share API for native mobile sharing
+- Fall back to clipboard copy with visual feedback
 ```
 
 ```
 Add Complex Setup to footer services list
 
-Co-Authored-By: Timothy Balch <timbalchtb@gmail.com>
+- Add all 4 service tiers to footer navigation
 ```
 
 ### Commit Actions:
