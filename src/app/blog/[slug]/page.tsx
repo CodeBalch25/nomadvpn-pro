@@ -1,9 +1,10 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Calendar, Clock, ArrowLeft, Share2 } from 'lucide-react'
+import { Calendar, Clock, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { ShareButton } from '@/components/blog/ShareButton'
 import { formatDate } from '@/lib/utils'
 import prisma from '@/lib/db'
 
@@ -236,10 +237,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <span className="text-sm text-muted-foreground">
                   Found this helpful? Share it with others.
                 </span>
-                <Button variant="outline" size="sm">
-                  <Share2 className="mr-2 h-4 w-4" />
-                  Share
-                </Button>
+                <ShareButton title={post.title} />
               </div>
             </div>
 
