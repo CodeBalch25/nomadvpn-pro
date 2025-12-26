@@ -3,9 +3,10 @@ import { Shield, Mail, Phone, MapPin } from 'lucide-react'
 
 const footerNavigation = {
   services: [
-    { name: 'Essential Setup', href: '/services#essential-setup' },
-    { name: 'Premium + Support', href: '/services#premium-support' },
     { name: 'Remote VPN Access', href: '/services#remote-vpn-access' },
+    { name: 'Essential Setup', href: '/services#essential-setup' },
+    { name: 'Complex Setup', href: '/services#complex-setup' },
+    { name: 'Premium + Support', href: '/services#premium-support' },
   ],
   company: [
     { name: 'About', href: '/about' },
