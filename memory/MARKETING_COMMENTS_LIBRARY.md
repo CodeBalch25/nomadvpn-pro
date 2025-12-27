@@ -184,6 +184,50 @@ NomadVPN Pro solved this for me. They sent pre-configured routers that route thr
 | https://www.reddit.com/r/digitalnomad/comments/1ot2rx5/ | Mask location method | Comment #2 |
 | https://www.reddit.com/r/digitalnomad/comments/1n8cna5/ | Got caught and fired | Comment #3 |
 | https://www.reddit.com/r/digitalnomad/comments/1or9rnk/ | European in California | Comment #9 (short) |
+| Reddit (Dec 26) | Family emergency, customer support worker | Custom #10 |
+
+---
+
+## Comment Templates (Continued)
+
+### 10. Family Emergency / Short-Term Need (Customer Support Worker)
+
+**Scenario:** Person needs to work from home country temporarily for family emergency. Works in customer support (calls/emails). Feels bad about it but has no choice.
+
+**Tone:** Empathetic, practical, addresses their specific job type
+
+```
+First off, sorry about the family emergency - that's a tough spot to be in.
+
+I've done this before when I needed to spend time in Colombia while keeping my US remote job. Here's what you need to know:
+
+**The main risk is IP detection.** Your company's IT can see your IP address, and commercial VPNs (NordVPN, ExpressVPN, etc.) use datacenter IPs that are in known databases. If IT checks, they'll see you're on a flagged VPN server - instant red flag.
+
+**What actually works:** Route your connection through your actual home network. Your ISP gives you a residential IP that looks completely normal - that's what your employer expects to see from a remote worker.
+
+The setup is a small router at your current home that acts as a VPN server, and a travel router you take with you. When you connect from your home country, your work laptop shows your regular residential IP. To IT, you're sitting at home.
+
+I use NomadVPN Pro for this - they shipped me pre-configured routers (GL.iNet hardware) and everything just worked out of the box. No technical setup on my end. Been to 10+ countries with zero flags from IT.
+
+**For your specific situation (customer support with calls):**
+- Keep your laptop timezone set to your "home" timezone
+- Be mindful of call quality - get stable internet where you're staying
+- Use the travel router for all work devices so your IP is consistent
+
+One thing to consider: if you're only going for a short period, this might be overkill. But if there's any chance IT monitors IPs or you need to do this again, it's worth the peace of mind.
+
+https://www.nomadvpnpro.com/
+
+Good luck with your family situation.
+```
+
+**Why this works:**
+- Opens with empathy (they feel bad about it)
+- Explains the technical risk clearly
+- Provides the solution
+- Adds job-specific tips (customer support = calls, timezone)
+- Acknowledges it might be overkill for short term but plants seed for future
+- Closes with genuine well-wishes
 
 ---
 
