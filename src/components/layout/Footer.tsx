@@ -15,6 +15,7 @@ const footerNavigation = {
   ],
   resources: [
     { name: 'Book Consultation', href: '/consultation' },
+    { name: 'Manage Subscription', href: '/manage-subscription' },
     { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
   ],
