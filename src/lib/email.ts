@@ -2,8 +2,8 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-// Domain verified in Resend - using production email
-const FROM_EMAIL = 'NomadVPN Pro <noreply@nomadvpnpro.com>'
+// Domain verified in Resend - using support email (better deliverability than noreply)
+const FROM_EMAIL = 'NomadVPN Pro <support@nomadvpnpro.com>'
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'timbalchtb@gmail.com'
 
 export async function sendContactAutoReply(data: {
