@@ -26,6 +26,7 @@
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
     "@stripe/stripe-js": "^8.6.0",
+    "@vercel/analytics": "^1.6.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "docx": "^9.5.1",
