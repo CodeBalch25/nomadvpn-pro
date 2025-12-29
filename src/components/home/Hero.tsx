@@ -53,7 +53,7 @@ export function Hero() {
             className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
           >
             Your traffic routes through your own residential IP, not a shared datacenter.
-            We ship pre-configured routers to your door. Work overseas, show up as home.
+            We ship pre-configured routers to your door. Work abroad, appear from home.
             IT just sees your home connection.
           </motion.p>
 
