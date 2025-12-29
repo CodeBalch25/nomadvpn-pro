@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Shield, Wifi, Globe, CheckCircle } from 'lucide-react'
+import { ArrowRight, Shield, Wifi, Globe, CheckCircle, RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export function Hero() {
@@ -77,12 +77,29 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          {/* ISP Trust Signals */}
+          {/* Trust Badges */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground"
+            className="mt-6 flex items-center justify-center gap-6 text-sm text-muted-foreground"
+          >
+            <div className="flex items-center gap-1.5">
+              <RotateCcw className="h-4 w-4 text-primary" />
+              <span>30-Day Money Back</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Shield className="h-4 w-4 text-primary" />
+              <span>Fortune 500 Tested</span>
+            </div>
+          </motion.div>
+
+          {/* ISP Trust Signals */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground"
           >
             <div className="flex items-center gap-1.5">
               <CheckCircle className="h-4 w-4 text-emerald-500" />
@@ -113,7 +130,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.45 }}
             className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
           >
             <div className="text-center">

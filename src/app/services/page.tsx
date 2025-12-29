@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, HelpCircle, CheckCircle, AlertTriangle, Wifi } from 'lucide-react'
+import { ArrowRight, HelpCircle, CheckCircle, AlertTriangle, Wifi, ShieldCheck, RotateCcw, Headphones } from 'lucide-react'
 import { ServiceCard } from '@/components/services/ServiceCard'
 import { Button } from '@/components/ui/button'
 import {
@@ -58,6 +58,11 @@ const faqs = [
     question: 'What hardware do I receive?',
     answer:
       'Easy and Complex Setup include a GL.iNet Flint 2 (home) and Beryl AX (travel). Premium Bundle adds a TP-Link Deco mesh system. Remote VPN Access includes just the Beryl AX travel router since no home equipment is needed.',
+  },
+  {
+    question: 'What is your refund policy?',
+    answer:
+      'We offer a 30-day money-back guarantee on all packages. If you are not completely satisfied with your setup, contact us within 30 days for a full refund. Return shipping for hardware is the customer\'s responsibility, but we will refund the full purchase price.',
   },
 ]
 
@@ -182,6 +187,37 @@ export default async function ServicesPage() {
               Works with 85% of US home internet providers. Tested with Fortune 500
               telecom, retail, and government networks.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Signals */}
+      <section className="py-8 bg-card/50 border-y border-border/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <RotateCcw className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-semibold">30-Day Money Back</h3>
+                <p className="text-sm text-muted-foreground">Not satisfied? Full refund, no questions asked.</p>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <ShieldCheck className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-semibold">Fortune 500 Tested</h3>
+                <p className="text-sm text-muted-foreground">Proven with enterprise telecom and retail networks.</p>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Headphones className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-semibold">Expert Support</h3>
+                <p className="text-sm text-muted-foreground">Real network engineers, not chatbots.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
