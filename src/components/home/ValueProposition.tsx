@@ -7,27 +7,27 @@ import { Card, CardContent } from '@/components/ui/card'
 const features = [
   {
     icon: Home,
-    title: 'Residential IP Address',
+    title: 'Your Residential IP',
     description:
-      'Your traffic routes through your home internet connection, giving you a consistent US IP address no matter where you travel.',
+      'Traffic routes through YOUR home internet—not a datacenter. IT systems see your home IP address, not a foreign location or VPN service.',
   },
   {
     icon: Building2,
-    title: 'Secure Public WiFi',
+    title: 'Undetectable Connection',
     description:
-      'Protect your data on hotel, airport, and cafe networks. All traffic is encrypted through your private VPN tunnel.',
+      'Unlike commercial VPNs, your connection appears as normal residential traffic. Banks, streaming services, and employers see a US home IP.',
   },
   {
     icon: Shield,
-    title: 'Reliable Connections',
+    title: 'Enterprise Compatible',
     description:
-      'Tested across 50+ countries with 99.9% uptime. No dropped connections, no speed throttling, no data leaks.',
+      'Tested with Fortune 500 telecom, retail, and government networks. Works with corporate security systems that block typical VPNs.',
   },
   {
     icon: Zap,
-    title: 'Plug & Play Setup',
+    title: 'Plug & Play Hardware',
     description:
-      'Pre-configured hardware arrives ready to use. Connect, power on, and enjoy secure internet from anywhere.',
+      'Pre-configured routers ship to your door. No technical setup required—just connect, power on, and work from anywhere.',
   },
 ]
 
@@ -122,11 +122,11 @@ export function ValueProposition() {
                 Commercial VPN Services
               </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Data center IPs blocked by streaming services</li>
-                <li>• Shared with thousands of users</li>
-                <li>• Inconsistent speeds and reliability</li>
-                <li>• Often throttled or blocked abroad</li>
-                <li>• No dedicated connection</li>
+                <li>• Datacenter IPs flagged by IT departments</li>
+                <li>• Blocked by banks, Netflix, and work systems</li>
+                <li>• Shared with thousands—slow and unreliable</li>
+                <li>• Employer can detect VPN usage</li>
+                <li>• No control over your connection</li>
               </ul>
             </div>
 
@@ -139,11 +139,11 @@ export function ValueProposition() {
                 NomadVPN Pro Solution
               </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Your own residential US IP address</li>
-                <li>• Tested with Fortune 500 enterprise networks</li>
-                <li>• Access US streaming and banking</li>
-                <li>• Telecom, retail & government compatible</li>
-                <li>• Full control of your network</li>
+                <li>• YOUR residential IP—not detectable as VPN</li>
+                <li>• IT sees home connection, not foreign travel</li>
+                <li>• Banks and streaming services work normally</li>
+                <li>• Enterprise-grade security, Fortune 500 tested</li>
+                <li>• Pre-configured hardware, zero technical setup</li>
               </ul>
             </div>
           </div>

@@ -38,11 +38,11 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight"
           >
-            <span className="text-foreground">Stay </span>
-            <span className="gradient-text">Connected</span>
+            <span className="text-foreground">Your </span>
+            <span className="gradient-text">Home Network</span>
             <br />
-            <span className="text-foreground">From </span>
-            <span className="gradient-text">Anywhere</span>
+            <span className="text-foreground">Anywhere in the </span>
+            <span className="gradient-text">World</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -52,9 +52,9 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
           >
-            Secure VPN solutions for travelers and remote professionals.
-            Tested with Fortune 500 telecom, retail, and government networks.
-            Reliable US access from anywhere in the world.
+            Route your traffic through YOUR residential IP—not a datacenter.
+            Pre-configured routers ship to your door. Work from Bali, appear from Boston.
+            IT sees your home connection, not a foreign coffee shop.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -121,8 +121,8 @@ export function Hero() {
               <div className="text-sm text-muted-foreground mt-1">Uptime Reliability</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold gradient-text">50+</div>
-              <div className="text-sm text-muted-foreground mt-1">Countries Tested</div>
+              <div className="text-3xl sm:text-4xl font-bold gradient-text">24hr</div>
+              <div className="text-sm text-muted-foreground mt-1">Setup Time</div>
             </div>
             <div className="text-center">
               <div className="text-3xl sm:text-4xl font-bold gradient-text">100%</div>

@@ -20,22 +20,24 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: {
-    default: 'NomadVPN Pro | Secure Travel VPN Solutions',
+    default: 'NomadVPN Pro | Your Home Network, Anywhere in the World',
     template: '%s | NomadVPN Pro',
   },
   description:
-    'Secure VPN solutions for travelers and remote professionals. Protect your connection on public WiFi and maintain reliable access to US networks from anywhere in the world.',
+    'Access your home network from anywhere. Pre-configured VPN routers give you YOUR residential IP while traveling. Work from Bali, appear from Boston. Undetectable by IT.',
   keywords: [
-    'travel VPN',
-    'secure WiFi',
     'residential VPN',
-    'travel router setup',
+    'home network VPN',
+    'digital nomad VPN',
+    'remote work VPN',
+    'travel router',
     'GL.iNet router',
     'WireGuard VPN',
-    'public WiFi security',
-    'VPN for travelers',
-    'secure internet abroad',
-    'US IP address',
+    'work from anywhere',
+    'residential IP address',
+    'stealth VPN',
+    'undetectable VPN',
+    'VPN for remote workers',
   ],
   authors: [{ name: 'NomadVPN Pro' }],
   creator: 'NomadVPN Pro',
@@ -44,23 +46,23 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: '/',
     siteName: 'NomadVPN Pro',
-    title: 'NomadVPN Pro | Secure Travel VPN Solutions',
+    title: 'NomadVPN Pro | Your Home Network, Anywhere in the World',
     description:
-      'Secure VPN solutions for travelers. Protect your connection on public WiFi and access US networks from anywhere.',
+      'Access your home network from anywhere. Pre-configured VPN routers give you YOUR residential IP. Work from Bali, appear from Boston.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'NomadVPN Pro - Stay Connected Securely',
+        alt: 'NomadVPN Pro - Your Home Network, Anywhere',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NomadVPN Pro | Secure Travel VPN Solutions',
+    title: 'NomadVPN Pro | Your Home Network, Anywhere',
     description:
-      'Secure VPN solutions for travelers. Protect your connection on public WiFi and access US networks from anywhere.',
+      'Access your home network from anywhere. Pre-configured VPN routers give you YOUR residential IP. Undetectable by IT.',
     images: ['/og-image.png'],
   },
   robots: {
