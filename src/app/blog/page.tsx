@@ -7,9 +7,10 @@ import { formatDate } from '@/lib/utils'
 import prisma from '@/lib/db'
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'Blog | Remote Work VPN Guides & Digital Nomad Tips | NomadVPN Pro',
   description:
-    'Tips, guides, and insights for digital nomads and remote workers. Learn about VPN setup, travel routers, and working from anywhere.',
+    'Learn how to work abroad without your employer knowing. Guides on residential VPNs, travel routers, hiding your location from IT, and secure remote work.',
+  keywords: ['work abroad guide', 'hide location from employer', 'residential VPN guide', 'digital nomad VPN', 'remote work tips'],
 }
 
 async function getBlogPosts() {
@@ -32,6 +33,17 @@ async function getBlogPosts() {
   } catch (error) {
     // Return sample posts if database isn't ready
     return [
+      {
+        id: '3',
+        title: 'How to Work Abroad Without Your Employer Knowing (2025 Guide)',
+        slug: 'how-to-work-abroad-without-employer-knowing',
+        excerpt:
+          'A practical guide for remote workers who want to work from abroad while appearing to be at home. Learn how IT departments detect your location and how to stay under the radar.',
+        coverImage: null,
+        publishedAt: new Date('2025-01-10'),
+        tags: ['Remote Work', 'Work Abroad', 'Digital Nomad'],
+        author: 'NomadVPN Pro Team',
+      },
       {
         id: '1',
         title: 'Why Residential VPNs Beat Commercial Services for Remote Work',

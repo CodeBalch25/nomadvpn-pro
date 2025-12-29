@@ -9,13 +9,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { FAQSchema, ProductSchema } from '@/components/seo/JsonLd'
 import prisma from '@/lib/db'
 import { serviceTiers } from '@/lib/validations'
 
 export const metadata: Metadata = {
-  title: 'Services | NomadVPN Pro',
+  title: 'VPN Router Setup Services | Work Abroad, Appear From Home | NomadVPN Pro',
   description:
-    'Choose from our VPN setup packages: Remote VPN Access ($35/mo), Easy Setup ($699), Complex Setup ($899), or Premium Bundle ($1,499). Works with 85% of US internet providers.',
+    'Pre-configured VPN routers for remote workers. Route traffic through your residential IP while working abroad. 30-day money-back guarantee. Packages from $35/mo.',
+  keywords: ['residential VPN', 'work abroad VPN', 'remote work VPN', 'travel router', 'hide location from employer'],
 }
 
 const faqs = [
@@ -174,7 +176,10 @@ export default async function ServicesPage() {
   const services = await getServices()
 
   return (
-    <div className="min-h-screen pt-24">
+    <>
+      <FAQSchema faqs={faqs} />
+      <ProductSchema />
+      <div className="min-h-screen pt-24">
       {/* Hero */}
       <section className="section-padding bg-background relative overflow-hidden">
         <div className="absolute inset-0 cyber-grid opacity-30" />
@@ -422,5 +427,6 @@ export default async function ServicesPage() {
         </div>
       </section>
     </div>
+    </>
   )
 }

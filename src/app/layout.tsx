@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react'
 import '@/styles/globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { OrganizationSchema, LocalBusinessSchema } from '@/components/seo/JsonLd'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -89,6 +90,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <OrganizationSchema />
+        <LocalBusinessSchema />
+      </head>
       <body className="min-h-screen bg-background font-sans antialiased">
         <div className="relative flex min-h-screen flex-col">
           <Header />
