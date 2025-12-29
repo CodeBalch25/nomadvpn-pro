@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: '%s | NomadVPN Pro',
   },
   description:
-    'Access your home network from anywhere. Pre-configured VPN routers give you YOUR residential IP while traveling. Work from Bali, appear from Boston. Undetectable by IT.',
+    'Access your home network from anywhere. Pre-configured VPN routers give you your own residential IP while traveling. Work from anywhere, appear from home. Undetectable by IT.',
   keywords: [
     'residential VPN',
     'home network VPN',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     siteName: 'NomadVPN Pro',
     title: 'NomadVPN Pro | Your Home Network, Anywhere in the World',
     description:
-      'Access your home network from anywhere. Pre-configured VPN routers give you YOUR residential IP. Work from Bali, appear from Boston.',
+      'Access your home network from anywhere. Pre-configured VPN routers give you your own residential IP. Work from anywhere, appear from home.',
     images: [
       {
         url: '/og-image.png',

@@ -52,9 +52,9 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
           >
-            Route your traffic through YOUR residential IP—not a datacenter.
-            Pre-configured routers ship to your door. Work from Bali, appear from Boston.
-            IT sees your home connection, not a foreign coffee shop.
+            Your traffic routes through your own residential IP, not a shared datacenter.
+            We ship pre-configured routers to your door. Work from Lisbon, show up as your living room.
+            IT just sees your home connection.
           </motion.p>
 
           {/* CTA Buttons */}

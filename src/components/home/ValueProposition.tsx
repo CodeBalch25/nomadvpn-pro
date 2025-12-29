@@ -9,7 +9,7 @@ const features = [
     icon: Home,
     title: 'Your Residential IP',
     description:
-      'Traffic routes through YOUR home internet—not a datacenter. IT systems see your home IP address, not a foreign location or VPN service.',
+      'Traffic routes through YOUR home internet, not a datacenter. IT systems see your home IP address, not a foreign location or VPN service.',
   },
   {
     icon: Building2,
@@ -27,7 +27,7 @@ const features = [
     icon: Zap,
     title: 'Plug & Play Hardware',
     description:
-      'Pre-configured routers ship to your door. No technical setup required—just connect, power on, and work from anywhere.',
+      'Pre-configured routers ship to your door. No technical setup required. Just connect, power on, and work from anywhere.',
   },
 ]
 
@@ -124,7 +124,7 @@ export function ValueProposition() {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>• Datacenter IPs flagged by IT departments</li>
                 <li>• Blocked by banks, Netflix, and work systems</li>
-                <li>• Shared with thousands—slow and unreliable</li>
+                <li>• Shared with thousands of users, slow and unreliable</li>
                 <li>• Employer can detect VPN usage</li>
                 <li>• No control over your connection</li>
               </ul>
@@ -139,7 +139,7 @@ export function ValueProposition() {
                 NomadVPN Pro Solution
               </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• YOUR residential IP—not detectable as VPN</li>
+                <li>• YOUR residential IP, not detectable as VPN</li>
                 <li>• IT sees home connection, not foreign travel</li>
                 <li>• Banks and streaming services work normally</li>
                 <li>• Enterprise-grade security, Fortune 500 tested</li>
