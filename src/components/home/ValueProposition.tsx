@@ -9,19 +9,19 @@ const features = [
     icon: Home,
     title: 'Your Residential IP',
     description:
-      'Traffic routes through YOUR home internet, not a datacenter. IT systems see your home IP address, not a foreign location or VPN service.',
+      'Traffic routes through YOUR home internet, not a datacenter. You get your own dedicated US residential IP address wherever you travel.',
   },
   {
     icon: Building2,
-    title: 'Undetectable Connection',
+    title: 'Seamless Connection',
     description:
-      'Unlike commercial VPNs, your connection appears as normal residential traffic. Banks, streaming services, and employers see a US home IP.',
+      'Unlike commercial VPNs, your connection appears as normal residential traffic. Banks and streaming services work just like at home.',
   },
   {
     icon: Shield,
     title: 'Enterprise Compatible',
     description:
-      'Tested with Fortune 500 telecom, retail, and government networks. Works with corporate security systems that block typical VPNs.',
+      'Tested with Fortune 500 telecom, retail, and government networks. Works alongside corporate security systems that block typical VPNs.',
   },
   {
     icon: Zap,
