@@ -124,7 +124,7 @@ export function Testimonials() {
           </div>
           <div className="flex items-center gap-3 justify-center md:justify-end">
             <MapPin className="h-5 w-5 text-primary" />
-            <span className="text-muted-foreground">Based in Los Angeles, CA</span>
+            <span className="text-muted-foreground">US-based support</span>
           </div>
         </motion.div>
 
