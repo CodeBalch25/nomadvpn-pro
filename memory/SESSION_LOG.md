@@ -89,34 +89,37 @@ NomadVPN Pro is a VPN router setup service targeting digital nomads and remote w
 
 ## Immediate Next Steps
 
-### BEFORE GOING LIVE (Critical)
+### Website Live on Vercel
+- **Production URL:** https://www.nomadvpnpro.com
+- **Deployment:** Auto-deploys from GitHub main branch
+- **Analytics:** Vercel Analytics enabled
+
+### Email Setup (Needs Attention)
 1. **Verify domain in Resend** - https://resend.com/domains
    - Add `nomadvpn.pro`
    - Add DNS records (SPF, DKIM, DMARC)
-   - Currently emails ONLY work for `timbalchtb@gmail.com`
-   - Real customers won't receive auto-replies until verified!
+   - Currently emails work in test mode only
 
-2. **After domain verification, update email settings in `src/lib/email.ts`:**
-   ```
-   FROM_EMAIL = 'NomadVPN Pro <noreply@nomadvpn.pro>'
-   NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'timudai@outlook.com'
-   ```
+### Marketing Priority (Jan 2026)
+1. **Build Reddit/Quora Karma (2-4 weeks)**
+   - Post helpful comments WITHOUT links
+   - Target: r/digitalnomad, r/remotework, r/VPN
+   - Draft comments provided in this session
 
-3. Test Stripe checkout flow
-4. Deploy to Railway
+2. **Collect Real Testimonials**
+   - Beta tester CTA now live on homepage
+   - Consider reaching out to LinkedIn connections
+   - Use own travel experience (anonymously)
 
-### Marketing (Started)
-- ✅ Apply GL.iNet Affiliate: https://www.gl-inet.com/affiliate-program/
-- ✅ Apply GL.iNet Reseller: https://www.gl-inet.com/form/become-a-reseller/
-- ✅ Create Reddit Account
-- Start Reddit commenting (build karma)
-- Create lead magnet PDF
-- Script first YouTube video
+3. **After Karma Built (~Feb 2026)**
+   - Start mentioning NomadVPN Pro in relevant threads
+   - Post "Looking for beta testers" in r/digitalnomad
+   - Create YouTube setup guide
 
-### Deployment
-- Platform: Railway (recommended)
-- Domain: Cloudflare ($12.99/year)
-- Total first year: ~$120
+### Deployment Info
+- Platform: Vercel (currently live)
+- Domain: nomadvpnpro.com
+- Database: PostgreSQL via Docker (local dev)
 
 ---
 
