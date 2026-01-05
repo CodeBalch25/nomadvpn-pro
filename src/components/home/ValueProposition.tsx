@@ -122,10 +122,10 @@ export function ValueProposition() {
                 Commercial VPN Services
               </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Datacenter IPs flagged by IT departments</li>
-                <li>• Blocked by banks, Netflix, and work systems</li>
-                <li>• Shared with thousands of users, slow and unreliable</li>
-                <li>• Employer can detect VPN usage</li>
+                <li>• Datacenter IPs get blocked by websites</li>
+                <li>• Banks and streaming services often fail</li>
+                <li>• Shared with thousands of users, slow speeds</li>
+                <li>• Inconsistent connection quality abroad</li>
                 <li>• No control over your connection</li>
               </ul>
             </div>
@@ -139,8 +139,8 @@ export function ValueProposition() {
                 NomadVPN Pro Solution
               </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• YOUR residential IP, not detectable as VPN</li>
-                <li>• IT sees home connection, not foreign travel</li>
+                <li>• YOUR dedicated residential IP address</li>
+                <li>• Consistent US connection from anywhere</li>
                 <li>• Banks and streaming services work normally</li>
                 <li>• Enterprise-grade security, Fortune 500 tested</li>
                 <li>• Pre-configured hardware, zero technical setup</li>
