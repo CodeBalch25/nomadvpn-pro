@@ -53,43 +53,57 @@ export function Testimonials() {
           </p>
         </motion.div>
 
-        {/* Founder Story - Single authentic testimonial */}
+        {/* Why We Built This - Problem/Solution format */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto"
+          className="max-w-4xl mx-auto"
         >
-          <motion.div variants={itemVariants}>
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-colors">
-              <CardContent className="p-8">
-                <Quote className="h-10 w-10 text-primary/30 mb-6" />
-
-                <p className="text-lg text-foreground mb-8 leading-relaxed">
-                  "{founderStory.quote}"
-                </p>
-
-                <div className="flex items-center gap-4 border-t border-border pt-6">
-                  {/* Placeholder for photo - you can add a real image later */}
-                  <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center">
-                    <span className="text-xl font-bold text-primary">TB</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <motion.div variants={itemVariants}>
+              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50">
+                <CardContent className="p-6">
+                  <div className="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center mb-4">
+                    <span className="text-destructive font-bold">1</span>
                   </div>
-                  <div>
-                    <p className="font-semibold text-foreground text-lg">
-                      {founderStory.author}
-                    </p>
-                    <p className="text-sm text-primary">
-                      {founderStory.role}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {founderStory.experience}
-                    </p>
+                  <h3 className="font-semibold text-foreground mb-2">The Problem</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {whyWeBuiltThis.problem}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50">
+                <CardContent className="p-6">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <span className="text-primary font-bold">2</span>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+                  <h3 className="font-semibold text-foreground mb-2">The Solution</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {whyWeBuiltThis.solution}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50">
+                <CardContent className="p-6">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4">
+                    <span className="text-emerald-500 font-bold">3</span>
+                  </div>
+                  <h3 className="font-semibold text-foreground mb-2">The Result</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {whyWeBuiltThis.result}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Experience Highlights */}
