@@ -115,6 +115,59 @@ NomadVPN Pro is a VPN router setup service targeting digital nomads and remote w
 
 ---
 
+## Session: January 5, 2026 - Copy Improvements & Trust Building
+
+### Problem Identified
+- 53 visitors in 30 days, 0 leads
+- 77% bounce rate
+- User reported posts getting removed as spam on Quora/Reddit
+- Concern that website copy sounds "scammy"
+
+### Root Cause Analysis
+1. **Copy was too "sneaky"** - phrases like "IT just sees your home connection", "Undetectable Connection" made it sound like spy gear
+2. **Fake testimonials** - Anonymous testimonials ("Network Engineer at Fortune 500 Telecom") with no real names/photos = obvious fakes
+3. **Unbelievable stats** - "100% Satisfaction Rate" sounds made up
+4. **Reddit/Quora spam** - New accounts posting links get auto-flagged; need 2-4 weeks of karma building first
+
+### Changes Made
+
+#### Hero.tsx
+- Changed subheadline from "IT just sees your home connection" to "Travel anywhere while staying connected to your home network securely"
+- Changed stat from "100% Satisfaction Rate" to "50+ Countries Tested"
+
+#### ValueProposition.tsx
+- Changed "Undetectable Connection" to "Seamless Connection"
+- Updated feature descriptions to focus on connectivity, not hiding from employers
+- Removed all IT/employer detection language from comparison section
+- New comparison focuses on: datacenter IPs blocked, banks/streaming fail, slow speeds vs residential IP, consistent connection, works normally
+
+#### Testimonials.tsx (Major Rewrite)
+- **Removed:** 3 fake anonymous testimonials with names like "Network Engineer at Fortune 500 Telecom"
+- **Added:** Problem/Solution/Result format (3 cards, no personal identification)
+- **Added:** Beta tester CTA - "Want to be an early adopter? Apply for Beta Program"
+- **Changed:** "Based in Los Angeles, CA" to "US-based support"
+- **Kept:** Fortune 500 IT experience, 50+ countries tested badges
+
+### User Preferences Noted
+- **Does NOT want personal name listed on website**
+- **DOES want** early adopter/beta tester CTA
+
+### Karma Building Strategy (for Reddit/Quora)
+- Need 2-4 weeks posting helpful content WITHOUT links
+- Draft comments provided for r/digitalnomad, r/remotework, r/VPN, Quora
+- 90/10 rule: 90% helpful content, 10% promotion
+- Only mention NomadVPN Pro after establishing credibility
+
+### Files Modified
+- `src/components/home/Hero.tsx` - Subheadline, stats
+- `src/components/home/ValueProposition.tsx` - Feature titles, descriptions, comparison
+- `src/components/home/Testimonials.tsx` - Complete rewrite
+
+### Production Status
+- All changes deployed to www.nomadvpnpro.com via Vercel
+
+---
+
 ## Session: December 30, 2024 - Marketing & SEO Implementation
 
 ### Summary
