@@ -6,13 +6,11 @@ import { Card, CardContent } from '@/components/ui/card'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
-// Real founder story - this is authentic and verifiable
-const founderStory = {
-  quote:
-    "I built NomadVPN Pro because I faced this exact problem. Working remotely for a Fortune 500 company while traveling, I got locked out of my bank accounts, couldn't access streaming services, and dealt with unreliable commercial VPNs. After configuring my own residential VPN setup, everything just worked. Now I help others do the same.",
-  author: 'Timothy Balch',
-  role: 'Founder, NomadVPN Pro',
-  experience: 'Former IT at AT&T, Nike, Comcast',
+// Why we built this - anonymous but authentic
+const whyWeBuiltThis = {
+  problem: "Commercial VPNs kept failing when I needed them most - locked out of bank accounts, streaming services blocked, slow connections shared with thousands of users.",
+  solution: "After years working IT for Fortune 500 companies, I knew there had to be a better way. Residential VPN through your own home connection solves every problem commercial VPNs create.",
+  result: "Now tested across 50+ countries with telecom, retail, and government enterprise networks.",
 }
 
 const containerVariants = {
