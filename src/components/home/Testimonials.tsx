@@ -1,32 +1,19 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Quote, Star } from 'lucide-react'
+import { Quote, MapPin, Briefcase, Globe } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
-const testimonials = [
-  {
-    quote:
-      "I travel frequently while working remotely for a major telecom company. This setup gives me reliable, secure access to US networks from anywhere. Never had connection issues in Southeast Asia, Europe, or South America.",
-    author: 'Network Engineer',
-    company: 'Fortune 500 Telecom',
-    rating: 5,
-  },
-  {
-    quote:
-      'The setup process was incredibly smooth. I work with enterprise VPN systems daily at a major retailer, and this solution integrates perfectly. Up and running the same day my routers arrived.',
-    author: 'IT Professional',
-    company: 'Global Retail Brand',
-    rating: 5,
-  },
-  {
-    quote:
-      "I needed secure connectivity while traveling for a state government agency. This residential VPN setup protects sensitive data and gives me consistent US access. Used it across 12 countries without issues.",
-    author: 'Data Analyst',
-    company: 'State Government Agency',
-    rating: 5,
-  },
-]
+// Real founder story - this is authentic and verifiable
+const founderStory = {
+  quote:
+    "I built NomadVPN Pro because I faced this exact problem. Working remotely for a Fortune 500 company while traveling, I got locked out of my bank accounts, couldn't access streaming services, and dealt with unreliable commercial VPNs. After configuring my own residential VPN setup, everything just worked. Now I help others do the same.",
+  author: 'Timothy Balch',
+  role: 'Founder, NomadVPN Pro',
+  experience: 'Former IT at AT&T, Nike, Comcast',
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
