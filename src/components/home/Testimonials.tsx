@@ -48,77 +48,95 @@ export function Testimonials() {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold">
-            Trusted by <span className="gradient-text">Remote Workers</span> Worldwide
+            Built by a <span className="gradient-text">Remote Worker</span>, for Remote Workers
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Join professionals from leading companies who work from anywhere
-            without compromising their careers.
+            This isn't a corporate product. It's a solution I built to solve my own problem.
           </p>
         </motion.div>
 
+        {/* Founder Story - Single authentic testimonial */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+          className="max-w-3xl mx-auto"
         >
-          {testimonials.map((testimonial, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-colors">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-1 mb-4">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-primary text-primary"
-                      />
-                    ))}
+          <motion.div variants={itemVariants}>
+            <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-colors">
+              <CardContent className="p-8">
+                <Quote className="h-10 w-10 text-primary/30 mb-6" />
+
+                <p className="text-lg text-foreground mb-8 leading-relaxed">
+                  "{founderStory.quote}"
+                </p>
+
+                <div className="flex items-center gap-4 border-t border-border pt-6">
+                  {/* Placeholder for photo - you can add a real image later */}
+                  <div className="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center">
+                    <span className="text-xl font-bold text-primary">TB</span>
                   </div>
-
-                  <Quote className="h-8 w-8 text-primary/20 mb-4" />
-
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    "{testimonial.quote}"
-                  </p>
-
-                  <div className="border-t border-border pt-4">
-                    <p className="font-medium text-foreground">
-                      {testimonial.author}
+                  <div>
+                    <p className="font-semibold text-foreground text-lg">
+                      {founderStory.author}
+                    </p>
+                    <p className="text-sm text-primary">
+                      {founderStory.role}
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      {testimonial.company}
+                      {founderStory.experience}
                     </p>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </motion.div>
 
-        {/* Social Proof Stats */}
+        {/* Experience Highlights */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto"
+        >
+          <div className="flex items-center gap-3 justify-center md:justify-start">
+            <Globe className="h-5 w-5 text-primary" />
+            <span className="text-muted-foreground">Tested in 50+ countries</span>
+          </div>
+          <div className="flex items-center gap-3 justify-center">
+            <Briefcase className="h-5 w-5 text-primary" />
+            <span className="text-muted-foreground">Fortune 500 IT experience</span>
+          </div>
+          <div className="flex items-center gap-3 justify-center md:justify-end">
+            <MapPin className="h-5 w-5 text-primary" />
+            <span className="text-muted-foreground">Based in Los Angeles, CA</span>
+          </div>
+        </motion.div>
+
+        {/* Beta Tester CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
+          className="mt-16 max-w-2xl mx-auto"
         >
-          {[
-            { value: '100%', label: 'Client Satisfaction' },
-            { value: '50+', label: 'Countries Tested' },
-            { value: 'Fortune 500', label: 'Networks Tested' },
-            { value: '5+', label: 'Years Experience' },
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold gradient-text">
-                {stat.value}
-              </div>
-              <div className="text-sm text-muted-foreground mt-1">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+          <Card className="bg-primary/5 border-primary/20">
+            <CardContent className="p-6 text-center">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                Want to be an early adopter?
+              </h3>
+              <p className="text-muted-foreground mb-4">
+                We're looking for beta testers who travel frequently. Get a discounted setup in exchange for honest feedback.
+              </p>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/consultation">Apply for Beta Program</Link>
+              </Button>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </section>
