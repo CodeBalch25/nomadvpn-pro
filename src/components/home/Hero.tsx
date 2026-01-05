@@ -142,8 +142,8 @@ export function Hero() {
               <div className="text-sm text-muted-foreground mt-1">Setup Time</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold gradient-text">100%</div>
-              <div className="text-sm text-muted-foreground mt-1">Satisfaction Rate</div>
+              <div className="text-3xl sm:text-4xl font-bold gradient-text">50+</div>
+              <div className="text-sm text-muted-foreground mt-1">Countries Tested</div>
             </div>
           </motion.div>
         </div>
