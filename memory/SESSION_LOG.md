@@ -60,6 +60,11 @@ NomadVPN Pro is a VPN router setup service targeting digital nomads and remote w
 2. **YouTube** - Setup guides, comparisons
 3. **GL.iNet Partnership** - Affiliate (10%) + Reseller (15-25%)
 
+### Current Status (Jan 2026)
+- Reddit/Quora posts getting removed as spam (new account, no karma)
+- Need 2-4 weeks of helpful commenting before any self-promotion
+- Beta tester CTA added to website to generate real testimonials
+
 ### 90-Day Goals
 - Month 1: 500 visitors, 50 subscribers, 5 consultations, 2-3 customers
 - Month 3: 2,000 visitors, 200 subscribers, 15 consultations, 10-15 customers, $5-10K revenue
